@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { Link } from "wouter";
 
-// todo: remove mock functionality
+
 const courses = [
   {
     id: "intro-ml",
