@@ -41,8 +41,8 @@ export function Navbar() {
 
           <div className="flex items-center gap-2">
             <ThemeToggle />
-            <Link href="/courses" className="hidden sm:block">
-              <Button data-testid="button-start-learning">Start Learning</Button>
+            <Link href="/login" className="hidden sm:block">
+              <Button data-testid="button-start-learning">Login</Button>
             </Link>
             <Button
               size="icon"
@@ -72,9 +72,9 @@ export function Navbar() {
                 </Button>
               </Link>
             ))}
-            <Link href="/courses">
+            <Link href="/login">
               <Button className="w-full" onClick={() => setMobileMenuOpen(false)}>
-                Start Learning
+                Login
               </Button>
             </Link>
           </div>

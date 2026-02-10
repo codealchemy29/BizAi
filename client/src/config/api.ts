@@ -1,0 +1,1 @@
+export const API_BASE_URL = "https://api.deod.ai" //import.meta.env.VITE_API_BASE_URL;

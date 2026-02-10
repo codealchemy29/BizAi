@@ -10,6 +10,9 @@ import Tools from "@/pages/tools";
 import Playground from "@/pages/playground";
 import Resources from "@/pages/resources";
 import NotFound from "@/pages/not-found";
+import Login from "./pages/login";
+import AuthRedirect from "./pages/auth-redirect";
+import Profile from "./pages/profile";
 
 function Router() {
   return (
@@ -20,6 +23,9 @@ function Router() {
       <Route path="/tools" component={Tools} />
       <Route path="/playground" component={Playground} />
       <Route path="/resources" component={Resources} />
+      <Route path="/login" component={Login} />
+      <Route path="/auth-redirect" component={AuthRedirect} />
+      <Route path="/profile" component={Profile} />
       <Route component={NotFound} />
     </Switch>
   );
