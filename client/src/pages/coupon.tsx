@@ -2,12 +2,10 @@ import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { API_BASE_URL } from "@/config/api";
+import { toast } from "@/hooks/use-toast";
 
 export default function CouponRedeem() {
   const [couponCode, setCouponCode] = useState<string | null>(null);
-
-  const CLAIM_URL = "http://localhost:5000";
-  const authToken = localStorage.getItem("token");
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -31,7 +29,18 @@ export default function CouponRedeem() {
   });
 
   const result = await resp.json();
-  console.log(result);
+  if(result.status === 200){
+    toast({title:"Success",description:result.message});
+    setCouponCode(null);
+    if(token){
+      window.location.href = "/profile";
+    }else{
+      window.location.href = "/";
+    }
+  }else{
+    toast({title:"Please Login to Redeem Your Coupon",description:result.message,variant:"destructive"});
+  }
+  console.log(result)
 };
 
 
