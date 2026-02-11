@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { Link,useLocation  } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -12,6 +12,26 @@ export default function Login() {
     password: "",
   });
 
+  const [, navigate] = useLocation();
+
+useEffect(() => {
+  const params = new URLSearchParams(window.location.search);
+
+  const token = params.get("token");
+  const coupon = params.get("coupon");
+
+  if (token) {
+    // store token automatically
+    localStorage.setItem("token", token);
+
+    // redirect directly to coupon/payment page
+    if (coupon) {
+      navigate(`/coupon?coupon=${coupon}`);
+    } else {
+      navigate("/profile");
+    }
+  }
+}, []);
   const [error, setError] = useState<string | null>(null);
   // const [, setLocation] = useLocation();
 
@@ -56,12 +76,11 @@ console.log(API_BASE_URL)
 
   } catch (err: any) {
     setError(err.message);
-  } finally {
+  } finally { 
     setLoading(false);
   }
 };
 
-  const [, navigate] = useLocation();
 
   const handleLoginSuccess = () => {
     const params = new URLSearchParams(window.location.search);

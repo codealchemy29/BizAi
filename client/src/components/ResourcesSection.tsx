@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, FileText, Video, BookOpen, FileCode } from "lucide-react";
 import { Link } from "wouter";
 
-// todo: remove mock functionality
+
 const resources = [
   {
     title: "Understanding Transformers",
