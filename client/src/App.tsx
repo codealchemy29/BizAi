@@ -1,4 +1,4 @@
-import { Switch, Route } from "wouter";
+import { Switch, Route} from "wouter";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
@@ -16,6 +16,7 @@ import Login from "./pages/login";
 import AuthRedirect from "./pages/auth-redirect";
 import Profile from "./pages/profile";
 import CouponRedeem from "./pages/coupon";
+import FeedbackForIntro from "./pages/feedback-for-intro";
 
 function Router() {
   return (
@@ -32,6 +33,7 @@ function Router() {
       <Route path="/auth-redirect" component={AuthRedirect} />
       <Route path="/coupon" component={CouponRedeem} />
       <Route path="/profile" component={Profile} />
+      <Route path="/feedback-for-intro" component={FeedbackForIntro} />
       <Route component={NotFound} />
     </Switch>
   );
