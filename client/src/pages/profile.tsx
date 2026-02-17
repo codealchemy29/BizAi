@@ -368,43 +368,47 @@ export default function Profile() {
                                         </div>
                                     </div>
                                     <div className="mt-4 pt-4 border-t bg-emerald-50/50 -mx-6 -mb-6 p-6 rounded-b-2xl">
-                                        <div className="flex items-center justify-between gap-2 mb-3">
-                                            <div className="flex items-center gap-2">
-                                                <div className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
-                                                <p className="text-sm font-semibold text-emerald-700">
-                                                    Session Scheduled
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div className="bg-white/60 p-3 rounded-xl border border-emerald-100 space-y-2">
-                                            <div className="flex justify-between items-center text-sm">
-                                                <span className="text-muted-foreground text-xs uppercase font-medium">
-                                                    Date
-                                                </span>
-                                                <span className="font-semibold text-foreground">
-                                                    {introAI?.date}
-                                                </span>
-                                            </div>
-                                            <div className="h-px bg-emerald-100/50" />
-                                            <div className="flex justify-between items-center text-sm">
-                                                <span className="text-muted-foreground text-xs uppercase font-medium">
-                                                    Time
-                                                </span>
-                                                <span className="font-semibold text-foreground">
-                                                    {introAI.time}
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
+  <div className="flex items-center justify-between gap-2 mb-3">
+    <div className="flex items-center gap-2">
+      <div className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+      <p className="text-sm font-semibold text-emerald-700">
+        Session Scheduled
+      </p>
+    </div>
+  </div>
+
+  <div className="bg-white/60 p-3 rounded-xl border border-emerald-100 space-y-2">
+    <div className="flex justify-between items-center text-sm">
+      <span className="text-muted-foreground text-xs uppercase font-medium">
+        Date
+      </span>
+      <span className="font-semibold text-foreground">
+        2026-02-18
+      </span>
+    </div>
+
+    <div className="h-px bg-emerald-100/50" />
+
+    <div className="flex justify-between items-center text-sm">
+      <span className="text-muted-foreground text-xs uppercase font-medium">
+        Time
+      </span>
+      <span className="font-semibold text-foreground">
+       1:00 PM - 02:00 PM
+      </span>
+    </div>
+  </div>
+</div>
+
                                     {/* ACTION AREA */}
-                                    <Button
+                                    {/* <Button
                                         size="sm"
                                         disabled={false}
                                         onClick={openIntroAIRescheduleModal}
                                         className="w-full mt-4 bg-[#1e3a8a] hover:bg-[#1e3a8a]/90 text-white rounded-xl"
                                     >
                                         Reschedule
-                                    </Button>
+                                    </Button> */}
                                 </div>
                             </div>
                         </div>

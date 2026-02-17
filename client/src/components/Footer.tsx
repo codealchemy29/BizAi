@@ -90,31 +90,35 @@ export function Footer() {
         </div>
 
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-5">
-          <div className="lg:col-span-1">
-            <Link href="/" className="flex items-center gap-2">
-              <div className="flex h-9 w-9 items-center justify-center rounded-md bg-primary">
-                <Sparkles className="h-5 w-5 text-primary-foreground" />
-              </div>
-              <span className="text-xl font-bold">AI Academy</span>
-            </Link>
-            <p className="mt-4 text-sm text-muted-foreground">
-              Empowering everyone to understand and use artificial intelligence.
-            </p>
-            <div className="mt-4 flex gap-2">
-              {socialLinks.map((social) => (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex h-9 w-9 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-                  data-testid={`link-social-${social.label.toLowerCase()}`}
-                >
-                  <social.icon className="h-4 w-4" />
-                </a>
-              ))}
-            </div>
-          </div>
+      <div className="flex flex-col items-start">
+
+  <Link
+    href="/"
+    className="flex items-center mb-4"
+    data-testid="footer-link-home"
+  >
+    {/* Light Theme Logo */}
+    <img
+      src="/bizaiskilllogo.png"
+      alt="AI Academy Logo"
+      className="h-[70px] md:h-[100px] w-auto object-contain dark:hidden"
+    />
+
+    {/* Dark Theme Logo */}
+    <img
+      src="/bizaiskilllogo.png"
+      alt="AI Academy Logo"
+      className="hidden h-[70px] md:h-[85px] w-auto object-contain dark:block"
+    />
+  </Link>
+
+  <p className="text-muted-foreground text-sm leading-relaxed max-w-sm">
+    {/* The AI ecosystem where builders learn, create, and earn.  */}
+    Empowering the next generation of AI creators.
+  </p>
+
+</div>
+
 
           <div>
             <h4 className="font-semibold">Company</h4>

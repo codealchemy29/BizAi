@@ -33,12 +33,23 @@ export function Navbar() {
     <nav className="sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur-md">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between gap-4">
-          <Link href="/" className="flex items-center gap-2">
-            <div className="flex h-9 w-9 items-center justify-center rounded-md bg-primary">
-              <Sparkles className="h-5 w-5 text-primary-foreground" />
-            </div>
-            <span className="text-xl font-bold">AI Academy</span>
-          </Link>
+         <Link to="/" className="flex items-center gap-2">
+  <div className="relative flex items-center justify-center">
+
+    <img
+      src="/bizaiskilllogo.png"
+      alt="AI Academy Logo"
+      className="h-[115px] md:h-[163px] w-auto object-contain dark:hidden"
+    />
+
+    <img
+      src="/bizaiskilllogo.png"
+      alt="AI Academy Logo"
+      className="hidden h-[115px] md:h-[163px] w-auto object-contain dark:block"
+    />
+
+  </div>
+</Link>
 
           <div className="hidden md:flex md:items-center md:gap-1">
             {navLinks.map((link) => (
