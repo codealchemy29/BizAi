@@ -38,13 +38,13 @@ export function Navbar() {
 
     <img
       src="/bizaiskilllogo.png"
-      alt="AI Academy Logo"
+      alt="BizAiSkill Logo"
       className="h-[115px] md:h-[163px] w-auto object-contain dark:hidden"
     />
 
     <img
       src="/bizaiskilllogo.png"
-      alt="AI Academy Logo"
+      alt="BizAiSkill Logo"
       className="hidden h-[115px] md:h-[163px] w-auto object-contain dark:block"
     />
 

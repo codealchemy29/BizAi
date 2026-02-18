@@ -100,14 +100,14 @@ export function Footer() {
     {/* Light Theme Logo */}
     <img
       src="/bizaiskilllogo.png"
-      alt="AI Academy Logo"
+      alt="BizAiSkill Logo"
       className="h-[70px] md:h-[100px] w-auto object-contain dark:hidden"
     />
 
     {/* Dark Theme Logo */}
     <img
       src="/bizaiskilllogo.png"
-      alt="AI Academy Logo"
+      alt="BizAiSkill Logo"
       className="hidden h-[70px] md:h-[85px] w-auto object-contain dark:block"
     />
   </Link>
@@ -186,7 +186,7 @@ export function Footer() {
         </div>
 
         <div className="mt-10 flex flex-wrap items-center justify-between gap-4 border-t pt-8 text-sm text-muted-foreground">
-          <p>2024 AI Academy. All rights reserved.</p>
+          <p>2024 BizAiSkill. All rights reserved.</p>
           <p>Made with AI, for AI learners</p>
         </div>
       </div>
