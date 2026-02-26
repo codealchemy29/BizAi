@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/dialog";
 import { Navbar } from "@/components/Navbar";
 import { toast } from "@/hooks/use-toast";
+import { Badge } from "@/components/ui/badge";
 
 interface IntroAIType {
     _id: string;
@@ -535,10 +536,12 @@ export default function Profile() {
                                                     !c.isRedeemed && (
                                                         <Button
                                                             size="sm"
-                                                            disabled={
-                                                                redeemingId ===
-                                                                c._id
-                                                            }
+                                                            // disabled={
+                                                            //     redeemingId ===
+                                                            //     c._id
+                                                            // }
+                                                            disabled={true}
+                                                            title="Coming Soon"
                                                             onClick={() =>
                                                                 redeemCoupon(c)
                                                             }
@@ -552,6 +555,9 @@ export default function Profile() {
                                                     )}
                                             </div>
                                         )}
+                                        <p className=" mt-2 text-muted-foreground text-xs">
+                                            Coupon redeem functionality is not available yet. we are working on it.
+                                        </p>
                                     </div>
                                 );
                             })}
