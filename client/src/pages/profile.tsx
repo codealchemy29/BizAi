@@ -13,6 +13,7 @@ import {
 import { Navbar } from "@/components/Navbar";
 import { toast } from "@/hooks/use-toast";
 import { Badge } from "@/components/ui/badge";
+import { User, Ticket, Calendar, Home } from "lucide-react";
 
 interface IntroAIType {
     _id: string;
@@ -325,23 +326,68 @@ export default function Profile() {
             <div className="min-h-screen bg-gradient-to-br from-muted/40 to-background py-12 px-6">
                 <div className="max-w-6xl mx-auto space-y-10">
                     {/* ===== HEADER ===== */}
-                    <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-                        <div>
-                            <h1 className="text-3xl font-bold tracking-tight">
-                                Welcome, {user.name}
-                            </h1>
-                            <p className="text-muted-foreground mt-1">
-                                Manage your coupons and session bookings
-                            </p>
-                        </div>
+                 <div className="relative rounded-2xl border bg-background/70 backdrop-blur-md
+                p-6 md:p-8 shadow-sm overflow-hidden">
 
-                        <Button
-                            className="bg-[#1e3a8a] hover:bg-[#1e3a8a]/90 text-white rounded-xl px-6"
-                            onClick={() => setLocation("/")}
-                        >
-                            Go Home
-                        </Button>
-                    </div>
+  {/* Floating Action Button */}
+  <Button
+    size="icon"
+    className="absolute top-full right-4 rounded-full
+           bg-[#1e3a8a] hover:bg-[#1e3a8a]/90
+           shadow-lg hover:scale-105
+           transition-all duration-300"
+    onClick={() => setLocation("/")}
+  >
+    <Home className="h-5 w-5 text-white" />
+  </Button>
+  
+
+  <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+
+    {/* LEFT SECTION */}
+    <div className="flex items-center gap-4">
+
+      {/* Avatar Circle */}
+      <div className="h-14 w-14 rounded-full bg-[#1e3a8a]/10
+                      flex items-center justify-center border">
+        <User className="h-7 w-7 text-[#1e3a8a]" />
+      </div>
+
+      {/* Greeting */}
+      <div className="space-y-1">
+        <h1 className="text-2xl md:text-3xl font-bold tracking-tight
+                       animate-in fade-in slide-in-from-left-2 duration-500">
+          Welcome back, <span className="text-[#1e3a8a]">{user.name}</span>
+        </h1>
+
+        <p className="text-sm md:text-base text-muted-foreground">
+          Manage your coupons and session bookings easily.
+        </p>
+      </div>
+    </div>
+
+    {/* STATS CHIPS */}
+    <div className="flex gap-3 flex-wrap">
+
+      <div className="flex items-center gap-2 rounded-xl border
+                      bg-background px-4 py-2 shadow-sm">
+        <Ticket className="h-4 w-4 text-[#1e3a8a]" />
+        <span className="text-sm font-medium">
+          Coupons: {user?.coupons ?? 0}
+        </span>
+      </div>
+
+      <div className="flex items-center gap-2 rounded-xl border
+                      bg-background px-4 py-2 shadow-sm">
+        <Calendar className="h-4 w-4 text-[#1e3a8a]" />
+        <span className="text-sm font-medium">
+          Sessions: {user?.sessions ?? 0}
+        </span>
+      </div>
+
+    </div>
+  </div>
+</div>
 
                     {/* ===== INTRO AI WORKSHOP SECTION ===== */}
                     {introAI !== null && (

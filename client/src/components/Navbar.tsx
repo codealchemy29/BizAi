@@ -42,18 +42,18 @@ export function Navbar() {
       className="h-[115px] md:h-[163px] w-auto object-contain dark:hidden"
     />
 
-    <img
+    {/* <img
       src="/bizaiskilllogo.png"
       alt="BizAiSkill Logo"
-      className="hidden h-[115px] md:h-[163px] w-auto object-contain dark:block"
+      className="hidden h-12 md:h-20 w-auto object-contain dark:hidden"
     />
-
+ */}
   </div>
 </Link>
 
           <div className="hidden md:flex md:items-center md:gap-1">
             {navLinks.map((link) => (
-              <Link key={link.href} href={link.href}>
+              <Link key={link.href} to={link.href}>
                 <Button variant={location === link.href ? "secondary" : "ghost"}>
                   {link.label}
                 </Button>
@@ -93,6 +93,58 @@ export function Navbar() {
           </div>
         </div>
       </div>
+
+      {mobileMenuOpen && (
+  <div className="md:hidden border-t bg-background px-4 py-3 space-y-2">
+
+    {navLinks.map((link) => (
+      <Link key={link.href} to={link.href}>
+        <Button
+          variant={location === link.href ? "secondary" : "ghost"}
+          className="w-full justify-start"
+          onClick={() => setMobileMenuOpen(false)}
+        >
+          {link.label}
+        </Button>
+      </Link>
+    ))}
+
+    {user ? (
+      <>
+        <Link to="/profile">
+          <Button
+            variant="ghost"
+            className="w-full justify-start"
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            <User className="mr-2 h-4 w-4" />
+            Profile
+          </Button>
+        </Link>
+
+        <Button
+  variant="ghost"
+  className="w-full justify-start rounded-2xl border
+             border-red-200 bg-red-50/50
+             text-red-600 hover:bg-red-100
+             transition-all duration-200"
+  onClick={() => {
+    logout();
+    setMobileMenuOpen(false);
+  }}
+>
+  <LogOut className="mr-3 h-4 w-4" />
+  Logout
+</Button>
+      </>
+    ) : (
+      <Link to="/login">
+        <Button className="w-full">Login</Button>
+      </Link>
+    )}
+
+  </div>
+)}
     </nav>
   );
 }
