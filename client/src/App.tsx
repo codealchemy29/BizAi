@@ -16,6 +16,12 @@ import Login from "./pages/login";
 import AuthRedirect from "./pages/auth-redirect";
 import Profile from "./pages/profile";
 import CouponRedeem from "./pages/coupon";
+<<<<<<< Updated upstream
+=======
+import FeedbackForIntro from "./pages/feedback-for-intro";
+import Learn from "./pages/learn";
+import Register from "./pages/register";
+>>>>>>> Stashed changes
 
 function Router() {
   return (
@@ -23,11 +29,13 @@ function Router() {
       <Route path="/" component={Home} />
       <Route path="/navbar" component={Navbar} />
       <Route path="/footer" component={Footer} />
+      <Route path="/learn" component={Learn} />
       <Route path="/courses" component={Courses} />
       <Route path="/courses/:id" component={CourseDetail} />
       <Route path="/tools" component={Tools} />
       <Route path="/playground" component={Playground} />
       <Route path="/resources" component={Resources} />
+      <Route path="/register" component={Register} />
       <Route path="/login" component={Login} />
       <Route path="/auth-redirect" component={AuthRedirect} />
       <Route path="/coupon" component={CouponRedeem} />

@@ -6,10 +6,12 @@ import { Link, useLocation } from "wouter";
 import { User, LogOut } from "lucide-react";
 
 const navLinks = [
+  { href: "/learn", label: "Learn" },
   { href: "/courses", label: "Courses" },
   { href: "/tools", label: "AI Tools" },
   { href: "/playground", label: "Playground" },
   { href: "/resources", label: "Resources" },
+
 ];
 
 export function Navbar() {
@@ -52,6 +54,13 @@ export function Navbar() {
 
           <div className="flex items-center gap-2">
             <ThemeToggle />
+             <div className="hidden md:block">
+                                    <Link href="/register">
+                                        <Button className="bg-gradient-to-r from-[#1e3a8a] to-blue-700 text-white">
+                                            Register
+                                        </Button>
+                                    </Link>
+                                </div>
 
             {user ? (
               <div className="hidden sm:flex items-center gap-2">
