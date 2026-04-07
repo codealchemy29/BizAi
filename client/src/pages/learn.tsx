@@ -1,4 +1,4 @@
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -135,10 +135,16 @@ export default function Learn() {
     const [couponData, setCouponData] = useState<any>(null);
     const [couponLoading, setCouponLoading] = useState(false);
     const [couponError, setCouponError] = useState<string | null>(null);
+
+    const [successOpen, setSuccessOpen] = useState(false);
+    const [successData, setSuccessData] = useState<any>(null);
+    const [, setLocation] = useLocation();
     // Check for existing coupons
     const [purchasedPackageIds, setPurchasedPackageIds] = useState<string[]>(
         [],
     );
+
+
 
     console.log("selectedPlan >>>", selectedPlan);
 
@@ -282,14 +288,23 @@ export default function Learn() {
                 const res = await verifyPayment(token, data);
                 console.log("Payment Response:", res);
                 if (res.status === 200) {
-                    toast({
-                        title: "Payment Successful",
-                        description: res.message,
-                    });
-                    setPurchasedPackageIds((prev) => [...prev, selectedPlan._id]);
-                    setOpen(false);
-                    setEnrollOpen(false);
-                } else {
+    setPurchasedPackageIds((prev) => [...prev, selectedPlan._id]);
+
+    // Save success data (coupon / package info)
+    setSuccessData({
+        packageName: selectedPlan.title,
+        code: res.data?.code || "N/A", // adjust based on API response
+    });
+
+    setOpen(false);
+    setEnrollOpen(false);
+    setSuccessOpen(true);
+
+    // Auto redirect after 3 sec
+    // setTimeout(() => {
+    //     window.location.href = "/profile";
+    // }, 3000);
+} else {
                     toast({
                         variant: "destructive",
                         title: "Payment Failed",
@@ -1061,6 +1076,56 @@ export default function Learn() {
                     )}
                 </DialogContent>
             </Dialog>
+
+
+            <Dialog open={successOpen} onOpenChange={setSuccessOpen}>
+    <DialogContent className="max-w-md p-6 text-center">
+        <div className="space-y-4">
+            <h2 className="text-2xl font-bold text-green-600">
+                🎉 Payment Successful!
+            </h2>
+
+            <p className="text-muted-foreground">
+                You have successfully purchased:
+            </p>
+
+            <div className="bg-green-50 dark:bg-green-900/20 border rounded-xl p-4">
+                <p className="font-semibold text-lg">
+                    {successData?.packageName}
+                </p>
+
+                <p className="mt-2 text-sm text-muted-foreground">
+                    Your Access Code:
+                </p>
+
+                <div className="mt-2 text-xl font-bold tracking-widest text-green-600">
+                    {successData?.code}
+                </div>
+            </div>
+
+             <div className="flex flex-col gap-3 mt-4">
+                <Button
+                    className="w-full bg-[#1e3a8a] text-white"
+                    onClick={() => setLocation("/profile")}
+                >
+                    Go to Profile 🚀
+                </Button>
+
+                {/* <Button
+                    variant="outline"
+                    className="w-full"
+                    onClick={() => setSuccessOpen(false)}
+                >
+                    Stay Here
+                </Button> */}
+            </div>
+
+             <p className="text-xs text-muted-foreground">
+                You can access your package anytime from your profile.
+            </p>
+        </div>
+    </DialogContent>
+</Dialog>
             <Footer />
         </div>
     );
