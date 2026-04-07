@@ -5,7 +5,7 @@ export async function getMe() {
 
   try {
     const res = await fetch(
-     `${API_BASE_URL}/api/v1/auth/me`,
+     `http://192.168.1.43:3000/api/v1/auth/me`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
