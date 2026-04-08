@@ -30,7 +30,7 @@ export default function Register() {
     const params = useParams<{ ref?: string }>();
     const query = new URLSearchParams(window.location.search);
     const refQuery = query.get("ref");
-    const referralFromUrl = params.ref || refQuery || "";
+    // const referralFromUrl = params.ref || refQuery || "";
 
     // const [walletAddress, setWalletAddress] = useState("");
 
@@ -40,7 +40,7 @@ export default function Register() {
         phone: "",
         password: "",
         confirmPassword: "",
-        referral: referralFromUrl,
+        // referral: referralFromUrl,
     });
 
     // const connectWallet = async () => {
@@ -165,7 +165,7 @@ export default function Register() {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
-        console.log("Referral from URL:", referralFromUrl);
+        // console.log("Referral from URL:", referralFromUrl);
 
         // const refWalletAddress =
         //     referralFromUrl ||
@@ -430,7 +430,7 @@ export default function Register() {
                                 {showConfirmPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                             </button>
                         </div>
-                        <div className="relative">
+                        {/* <div className="relative">
                             <SquareCode className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
                             <input
                                 type="text"
@@ -441,7 +441,7 @@ export default function Register() {
                                 onChange={handleChange}
                                 className={`w-full pl-10 pr-4 py-2 rounded-xl border bg-background focus:ring-2 focus:ring-[#1e3a8a] outline-none ${referralFromUrl ? "opacity-70 cursor-not-allowed" : ""}`}
                             />
-                        </div>
+                        </div> */}
 
                         {error && (
                             <p className="text-sm text-red-500 text-center">
