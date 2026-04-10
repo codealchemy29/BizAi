@@ -1,7 +1,3 @@
-
-
-
-
 //  ----- TESTNET -----
 // export const DEFAULT_REFFERAL_WALLET_ADDRESS = "0x2aBFBc3e4FD8e7cd083AB407774d13f7182b9D84";
 // export const CLAIM_URL = "https://www.bizaiskill.com";
@@ -11,11 +7,7 @@
 // export const STAKING_CONTRACT_ADDRESS = "0x7696Bd4E85f38115a1F258bF4613D269bEa00EcD";
 // export const NETWORK = "bnbTestnet";
 
-
-
-
-
-
+// export const RAZORPAY_KEY_ID = "rzp_test_Rz0imSQNZLfeTj";
 
 //  ----- MAINNET -----
 export const DEFAULT_REFFERAL_WALLET_ADDRESS =
@@ -27,5 +19,6 @@ export const DEOD_TOKEN_ADDRESS = "0x3510FbBC13090F991Ffa523527113A166161683e";
 export const STAKING_CONTRACT_ADDRESS =
     "0xa2088340cC2f19a5b34310Bcc0c5f83DE0756A97";
 export const NETWORK = "bsc";
-export const USD_TO_INR_EXCHANGE_RATE_API_URL = "https://api.exchangerate-api.com/v4/latest/USD"; 
-export const RAZORPAY_KEY_ID = "rzp_test_Rz0imSQNZLfeTj";
+export const USD_TO_INR_EXCHANGE_RATE_API_URL =
+    "https://api.exchangerate-api.com/v4/latest/USD";
+export const RAZORPAY_KEY_ID = "rzp_live_S0ZiIoGwpd3oiN";
