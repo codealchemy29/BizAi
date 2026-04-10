@@ -33,24 +33,24 @@ export function Navbar() {
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="flex h-16 items-center justify-between gap-4">
                     {/* Logo */}
-                  <Link href="/" className="flex items-center gap-2">
-    {/* Light Theme Logo */}
-    <img
-        src="/bizaiskilllogo.png"
-        alt="BizAiSkill Logo"
-        className="h-[90px] md:h-[138px] w-auto object-contain dark:hidden"
-    />
+                    <Link href="/" className="flex items-center gap-2">
+                        {/* Light Theme Logo */}
+                        <img
+                            src="/bizaiskilllogo.png"
+                            alt="BizAiSkill Logo"
+                            className="h-[90px] md:h-[138px] w-auto object-contain dark:hidden"
+                        />
 
-    {/* Dark Theme Logo */}
-    <img
-        src="/bizaiskilllogo.png"
-        alt="BizAiSkill Logo"
-        className="hidden h-[90px] md:h-[138px] w-auto object-contain dark:block"
-    />
+                        {/* Dark Theme Logo */}
+                        <img
+                            src="/bizaiskilllogo.png"
+                            alt="BizAiSkill Logo"
+                            className="hidden h-[90px] md:h-[138px] w-auto object-contain dark:block"
+                        />
 
-    {/* Optional Brand Name */}
-    {/* <span className="text-xl font-bold">BizAiSkill</span> */}
-</Link>
+                        {/* Optional Brand Name */}
+                        {/* <span className="text-xl font-bold">BizAiSkill</span> */}
+                    </Link>
 
                     {/* Desktop Nav Links */}
                     <div className="hidden md:flex md:items-center md:gap-1">

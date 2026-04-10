@@ -48,6 +48,7 @@ import {
 // import { switchNetworks } from "@/utils/switchNetwork";
 import useDeodPrice from "@/hooks/use-deodPrice";
 import useUsdToInr from "@/hooks/use-usdToInr";
+import { getMe } from "@/utils/auth";
 // import {
 //     DEOD_TOKEN_ABI,
 //     PURCHASE_CONTRACT_ABI,
@@ -123,6 +124,7 @@ function getLevelColor(level: string) {
 export default function Learn() {
     const [open, setOpen] = useState(false);
     const [paymentMethod, setPaymentMethod] = useState("");
+    const [user, setUser] = useState<any>(null);
     // const couponCode = "DEOD50";
     const [selectedPlan, setSelectedPlan] = useState<any>(null);
     const [enrollOpen, setEnrollOpen] = useState(false);
@@ -144,9 +146,18 @@ export default function Learn() {
         [],
     );
 
-
+    useEffect(() => {
+        getMe().then((data) => {
+            if (!data) {
+                setLocation("/login");
+            } else {
+                setUser(data);
+            }
+        });
+    }, []);
 
     console.log("selectedPlan >>>", selectedPlan);
+    console.log("user >>>", user);
 
     useEffect(() => {
         const fetchUserCoupons = async () => {
@@ -238,17 +249,14 @@ export default function Learn() {
 
     const verifyPayment = async (token: string, data: any) => {
         try {
-            const res = await fetch(
-                `${API_BASE_URL}/api/v1/coupons`,
-                {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                        Authorization: `Bearer ${token}`,
-                    },
-                    body: JSON.stringify(data),
+            const res = await fetch(`${API_BASE_URL}/api/v1/coupons`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
                 },
-            );
+                body: JSON.stringify(data),
+            });
             const json = await res.json();
             return json;
         } catch (error) {
@@ -288,23 +296,26 @@ export default function Learn() {
                 const res = await verifyPayment(token, data);
                 console.log("Payment Response:", res);
                 if (res.status === 200) {
-    setPurchasedPackageIds((prev) => [...prev, selectedPlan._id]);
+                    setPurchasedPackageIds((prev) => [
+                        ...prev,
+                        selectedPlan._id,
+                    ]);
 
-    // Save success data (coupon / package info)
-    setSuccessData({
-        packageName: selectedPlan.title,
-        code: res.data?.code || "N/A", // adjust based on API response
-    });
+                    // Save success data (coupon / package info)
+                    setSuccessData({
+                        packageName: selectedPlan.title,
+                        code: res.data?.code || "N/A", // adjust based on API response
+                    });
 
-    setOpen(false);
-    setEnrollOpen(false);
-    setSuccessOpen(true);
+                    setOpen(false);
+                    setEnrollOpen(false);
+                    setSuccessOpen(true);
 
-    // Auto redirect after 3 sec
-    // setTimeout(() => {
-    //     window.location.href = "/profile";
-    // }, 3000);
-} else {
+                    // Auto redirect after 3 sec
+                    // setTimeout(() => {
+                    //     window.location.href = "/profile";
+                    // }, 3000);
+                } else {
                     toast({
                         variant: "destructive",
                         title: "Payment Failed",
@@ -315,13 +326,13 @@ export default function Learn() {
                 setCouponLoading(false);
             },
             prefill: {
-                name: "Client",
-                email: "[EMAIL_ADDRESS]",
-                contact: "9876543210",
+                name: user?.name,
+                email: user?.email,
+                contact: user?.phone,
             },
             notes: {
                 address: "",
-                invoiceId: selectedPlan._id,
+                packageId: selectedPlan._id,
             },
             theme: {
                 color: "#2563eb",
@@ -1077,55 +1088,55 @@ export default function Learn() {
                 </DialogContent>
             </Dialog>
 
-
             <Dialog open={successOpen} onOpenChange={setSuccessOpen}>
-    <DialogContent className="max-w-md p-6 text-center">
-        <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-green-600">
-                🎉 Payment Successful!
-            </h2>
+                <DialogContent className="max-w-md p-6 text-center">
+                    <div className="space-y-4">
+                        <h2 className="text-2xl font-bold text-green-600">
+                            🎉 Payment Successful!
+                        </h2>
 
-            <p className="text-muted-foreground">
-                You have successfully purchased:
-            </p>
+                        <p className="text-muted-foreground">
+                            You have successfully purchased:
+                        </p>
 
-            <div className="bg-green-50 dark:bg-green-900/20 border rounded-xl p-4">
-                <p className="font-semibold text-lg">
-                    {successData?.packageName}
-                </p>
+                        <div className="bg-green-50 dark:bg-green-900/20 border rounded-xl p-4">
+                            <p className="font-semibold text-lg">
+                                {successData?.packageName}
+                            </p>
 
-                <p className="mt-2 text-sm text-muted-foreground">
-                    Your Access Code:
-                </p>
+                            <p className="mt-2 text-sm text-muted-foreground">
+                                Your Access Code:
+                            </p>
 
-                <div className="mt-2 text-xl font-bold tracking-widest text-green-600">
-                    {successData?.code}
-                </div>
-            </div>
+                            <div className="mt-2 text-xl font-bold tracking-widest text-green-600">
+                                {successData?.code}
+                            </div>
+                        </div>
 
-             <div className="flex flex-col gap-3 mt-4">
-                <Button
-                    className="w-full bg-[#1e3a8a] text-white"
-                    onClick={() => setLocation("/profile")}
-                >
-                    Go to Profile 🚀
-                </Button>
+                        <div className="flex flex-col gap-3 mt-4">
+                            <Button
+                                className="w-full bg-[#1e3a8a] text-white"
+                                onClick={() => setLocation("/profile")}
+                            >
+                                Go to Profile 🚀
+                            </Button>
 
-                {/* <Button
+                            {/* <Button
                     variant="outline"
                     className="w-full"
                     onClick={() => setSuccessOpen(false)}
                 >
                     Stay Here
                 </Button> */}
-            </div>
+                        </div>
 
-             <p className="text-xs text-muted-foreground">
-                You can access your package anytime from your profile.
-            </p>
-        </div>
-    </DialogContent>
-</Dialog>
+                        <p className="text-xs text-muted-foreground">
+                            You can access your package anytime from your
+                            profile.
+                        </p>
+                    </div>
+                </DialogContent>
+            </Dialog>
             <Footer />
         </div>
     );
