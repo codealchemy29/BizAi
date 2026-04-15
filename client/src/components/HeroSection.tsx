@@ -16,15 +16,17 @@ export function HeroSection() {
       <div className="relative mx-auto flex min-h-[85vh] max-w-7xl items-center px-4 py-20 sm:px-6 lg:px-8">
         <div className="max-w-2xl">
           <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
-            Master AI Tools &{" "}
+           Master AI.  <br/>
             <span className="bg-gradient-to-r from-blue-400 to-violet-400 bg-clip-text text-transparent">
-              Transform Your Skills
+            Build Real Skills. <br/>
+            </span>
+            <span className=" text-white bg-clip-text text-transparent">
+             Earn More.
             </span>
           </h1>
 
           <p className="mt-6 text-lg leading-relaxed text-gray-200 sm:text-xl">
-            Learn artificial intelligence from scratch with hands-on courses, interactive tools,
-            and expert-led training. No coding experience required.
+           Learn practical AI skills used in real businesses from automation to AI tools and turn them into income, freelance work, or career growth.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-4">
@@ -46,7 +48,7 @@ export function HeroSection() {
                 data-testid="button-try-tools"
               >
                 <Play className="h-4 w-4" />
-                Try AI Tools
+                Start Learning
               </Button>
             </Link>
           </div>

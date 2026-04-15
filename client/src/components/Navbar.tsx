@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "./ThemeToggle";
-import { Menu, X, Sparkles, User, LogOut } from "lucide-react";
+import { Menu, X, Sparkles, User, LogOut, HeartOff } from "lucide-react";
 import { Link, useLocation } from "wouter";
 
 const navLinks = [
+    { href: "/about", label: "About Us" },
     { href: "/learn", label: "Learn AI With Tutors" },
     { href: "/courses", label: "Courses" },
     { href: "/tools", label: "AI Tools" },

@@ -10,6 +10,7 @@ import Courses from "@/pages/courses";
 import CourseDetail from "@/pages/course-detail";
 import Tools from "@/pages/tools";
 import Playground from "@/pages/playground";
+import About from "@/pages/about";
 import Resources from "@/pages/resources";
 import NotFound from "@/pages/not-found";
 import Login from "./pages/login";
@@ -30,6 +31,7 @@ function Router() {
       <Route path="/footer" component={Footer} />
       <Route path="/learn" component={Learn} />
       <Route path="/courses" component={Courses} />
+      <Route path="/about" component={About} />
       <Route path="/courses/:id" component={CourseDetail} />
       <Route path="/tools" component={Tools} />
       <Route path="/playground" component={Playground} />
